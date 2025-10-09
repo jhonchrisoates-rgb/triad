@@ -1,6 +1,6 @@
 // Global Variables (Baguhin ito kung gagawa ng ibang product page)
 let selectedSize = ''; 
-const productName = "XTIG WINRE Oversized T-Shirt"; 
+const productName = "TRIAD WINRE Oversized T-Shirt"; 
 const productPrice = "₱750.00 PHP";
 const messengerID = "janjan.oates"; // Ang inyong FB Username
 
