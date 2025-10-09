@@ -1,12 +1,13 @@
-// Global Variables (Baguhin ito kung gagawa ng ibang product page)
+// === GLOBAL VARIABLES ===
+// Tiyakin na ang file na ito ay naka-link sa inyong winre-shirt.html bago mag </body>
 let selectedSize = ''; 
-const productName = "TRIAD WINRE Oversized T-Shirt"; 
+const productName = "XTIG WINRE Oversized T-Shirt"; 
 const productPrice = "₱750.00 PHP";
-const messengerID = "janjan.oates"; // Ang inyong FB Username
-const messengerLink = `https://m.me/${messengerID}?text=${encodedMessage}`;
+// EKSKATONG Facebook Username/Link na natukoy natin
 const messengerLinkBase = "https://www.facebook.com/messages/t/janjan.oates"; 
 
-// FUNCTION 1: Para sa pagpili ng Size
+
+// === FUNCTION 1: Para sa pagpili ng Size ===
 function selectSize(size) {
     selectedSize = size;
     
@@ -20,38 +21,38 @@ function selectSize(size) {
     }
 }
 
-// FUNCTION 2: Para sa Quantity +/-
+
+// === FUNCTION 2: Para sa Quantity +/- ===
 function changeQuantity(amount) {
     const input = document.getElementById('quantity-input');
     let quantity = parseInt(input.value);
     
-    // Iwasan na maging negative ang quantity at maging 10 ang maximum (Pwede itong baguhin)
+    // Iwasan na maging negative ang quantity
     quantity += amount;
     if (quantity < 1) {
         quantity = 1; 
     }
-    if (quantity > 10) {
-        quantity = 10;
-    }
     input.value = quantity;
 }
 
-// FUNCTION 3: Ang gagawa ng Messenger Link at magre-redirect
-// FUNCTION 3: Ang gagawa ng Messenger Link at magre-redirect
-function createOrderLink() {
-    // ... (Validation at Quantity code) ...
 
-    const quantity = document.getElementById('quantity-input').value; 
+// === FUNCTION 3: Ang Smart Buy Button Logic ===
+function createOrderLink() {
+    const quantity = document.getElementById('quantity-input').value;
     
-    // ... (Validation code) ...
+    // Validation: Tiyakin na pumili ng size
+    if (selectedSize === '') {
+        alert("Pumili po muna ng SIZE bago mag-order!"); 
+        return; 
+    }
     
-    // Ang mensahe na may order details
+    // Dito ginagamit ang backtick ( ` ) para mabuo ang mensahe kasama ang data
     const message = `Gusto ko pong umorder ng ${productName}. Details: Size ${selectedSize}, Quantity ${quantity}, Price ${productPrice}. Paki-confirm po ng order ko.`;
     
+    // Ginagawang URL-friendly ang mensahe
     const encodedMessage = encodeURIComponent(message);
     
-    // BAGUHIN ANG FINAL LINK CONSTRUCTION DITO:
-    // Pagsasamahin ang Base link at ang text parameter
+    // Dito binubuo ang final link gamit ang buong Facebook URL
     const finalOrderLink = `${messengerLinkBase}?text=${encodedMessage}`;
     
     // I-open ang link
