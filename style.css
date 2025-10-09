@@ -235,3 +235,13 @@ hr {
         margin: 20px auto;
     }
 }
+/* === GENERAL RESET & BASE STYLES === */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* IBAHIN ITO PABALIK SA WHITE THEME: */
+    background-color: white; 
+    color: black; 
+}
+/* ... Siguraduhin na palitan din ang kulay ng text at button sa Header Bar pabalik sa black text sa white background... */
