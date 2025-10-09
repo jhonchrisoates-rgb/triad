@@ -1,7 +1,7 @@
 // === GLOBAL VARIABLES ===
 // Tiyakin na ang file na ito ay naka-link sa inyong winre-shirt.html bago mag </body>
 let selectedSize = ''; 
-const productName = "XTIG WINRE Oversized T-Shirt"; 
+const productName = "TRIAD WINRE Oversized T-Shirt"; 
 const productPrice = "₱750.00 PHP";
 // EKSKATONG Facebook Username/Link na natukoy natin
 const messengerLinkBase = "https://www.facebook.com/messages/t/janjan.oates"; 
