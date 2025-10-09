@@ -1,221 +1,131 @@
-/* === STYLE PARA SA PRODUCT DETAIL PAGE (winre-shirt.html) === */
+/* === GENERAL RESET & BASE STYLES === */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; 
+    color: black;
+}
 
-/* Ginagamit ang Flexbox para i-arrange ang dalawang section nang tabi-tabi */
-.product-page-container {
+/* Para hindi lumabas ang underline sa mga link (tulad ng T-shirt name) */
+a {
+    text-decoration: none;
+    color: inherit; /* Kukunin ang kulay ng parent element (body, na black) */
+}
+a:hover {
+    color: #666; /* Bahagyang mag-iiba ang kulay kapag hinawakan ng mouse */
+}
+
+
+/* === HEADER BAR STYLES === */
+.main-header {
+    background-color: white; 
+    border-bottom: 1px solid #eee; 
+    padding: 15px 0;
+    position: sticky; 
+    top: 0;
+    z-index: 100; 
+}
+
+.header-content {
     display: flex;
+    justify-content: space-between; 
+    align-items: center; 
     max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-    gap: 40px; /* Pagitan ng kaliwa at kanan */
+    margin: 0 auto;
+    padding: 0 20px; 
 }
 
-.product-image-section {
-    flex: 6; /* Mas malaking space para sa image */
+.logo-link {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #555;
+    margin-left: 20px;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: black;
+}
+
+.messenger-icon {
+    background-color: black;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* === PRODUCT GRID STYLES (Para I-hilera ang mga item sa Home Page) === */
+.product-grid {
+    display: grid;
+    /* 4 na columns sa desktop */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px; 
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto; 
+    padding: 20px 0;
+}
+
+.product-item {
     text-align: center;
+    padding: 10px;
 }
 
-.product-details-section {
-    flex: 4; /* Mas maliit na space para sa details/buy box */
-    padding: 0 20px;
-}
-
-.main-product-image {
+.product-photo {
     width: 100%;
     height: auto;
+    display: block; 
 }
 
-/* Prices and Titles */
-.price-large {
-    font-size: 24px;
+.brand-name {
+    margin: 10px 0 0 0;
+    font-size: 10px; 
+    color: #444; 
+}
+
+.product-name {
+    margin: 5px 0;
+    font-size: 12px;
+    line-height: 1.4;
     font-weight: bold;
-    margin-bottom: 5px;
+    /* Siguraduhin na color black ang link text */
+    color: black; 
 }
 
-.shipping-info {
+.price {
+    margin: 5px 0 15px 0;
     font-size: 14px;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.product-title {
-    font-size: 20px;
-    font-weight: 500;
-    margin: 15px 0;
-}
-
-/* Size and Quantity Buttons */
-.size-options, .quantity-selector {
-    margin-bottom: 20px;
-}
-
-.size-options .label, .quantity-selector .label {
-    font-weight: bold;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.size-buttons button {
-    padding: 10px 15px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    background-color: white;
-    cursor: pointer;
-}
-
-.size-buttons .selected {
-    border-color: black;
-    font-weight: bold;
-}
-
-.quantity-input-box {
-    display: flex;
-    align-items: center;
-    width: 120px;
-    border: 1px solid #ccc;
-}
-
-.quantity-input-box button {
-    background: none;
-    border: none;
-    padding: 5px 10px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.quantity-input-box input {
-    width: 40px;
-    text-align: center;
-    border: none;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    padding: 5px 0;
-}
-
-
-/* Buy Buttons (Ang Pinakamahalaga) */
-.add-to-cart-btn, .buy-now-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 15px;
-    margin-top: 10px;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 16px;
-    box-sizing: border-box; /* Para hindi lumaki ang button sa labas ng div */
-}
-
-.add-to-cart-btn {
-    background-color: white;
     color: black;
-    border: 1px solid black;
+    font-weight: 600;
 }
 
-.buy-now-btn {
-    background-color: black;
+/* Para sa Order Button sa Home Page (kung wala pang detail page) */
+.order-button {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-top: 5px;
+    background-color: black; 
     color: white;
-    border: 1px solid black;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-/* Mobile Responsiveness: Gawing stacked ang elements sa mobile */
+/* === MOBILE RESPONSIVENESS === */
 @media (max-width: 768px) {
-    .product-page-container {
-        flex-direction: column;
-        margin: 20px auto;
+    .product-grid {
+        /* Sa mobile, gawing 2 columns lang */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
-/* === STYLE PARA SA HEADER BAR === */
-.main-header {
-    background-color: white; /* Puti ang background */
-    border-bottom: 1px solid #eee; /* Manipis na linya sa ilalim */
-    padding: 15px 0;
-    position: sticky; /* Para hindi gumalaw kahit mag-scroll */
-    top: 0;
-    z-index: 100; /* Para nasa ibabaw ng lahat */
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between; /* Hatiin ang space sa logo, nav, at icon */
-    align-items: center; /* I-sentro ang mga item nang patayo */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px; /* Para may space sa gilid */
-}
-
-.logo-link {
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: #555;
-    margin-left: 20px;
-    font-size: 14px;
-    transition: color 0.3s;
-}
-
-.main-nav a:hover {
-    color: black;
-}
-
-.messenger-icon {
-    background-color: black;
-    color: white;
-    padding: 8px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-}
-/* === STYLE PARA SA HEADER BAR === */
-.main-header {
-    background-color: white; /* Puti ang background */
-    border-bottom: 1px solid #eee; /* Manipis na linya sa ilalim */
-    padding: 15px 0;
-    position: sticky; /* Para hindi gumalaw ang header kahit mag-scroll */
-    top: 0;
-    z-index: 100; /* Para nasa ibabaw ng lahat ng elements */
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between; /* Hatiin ang space sa logo, nav, at icon */
-    align-items: center; /* I-sentro ang mga item nang patayo */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px; /* Para may space sa gilid */
-}
-
-.logo-link {
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: #555;
-    margin-left: 20px;
-    font-size: 14px;
-    transition: color 0.3s;
-}
-
-.main-nav a:hover {
-    color: black;
-}
-
-.messenger-icon {
-    background-color: black;
-    color: white;
-    padding: 8px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-}   
