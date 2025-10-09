@@ -49,9 +49,9 @@ function createOrderLink() {
     
     // Gawing URL-friendly ang mensahe
     const encodedMessage = encodeURIComponent(message);
-    
+
     const messengerLink = `https://m.me/${messengerID}?text=${encodedMessage}`;
-    
+
     // I-open ang Messenger sa bagong tab
     window.open(messengerLink, '_blank');
 }
