@@ -7,26 +7,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <header class="main-header">
-    <div class="header-content">
-        <a href="index.html" class="logo-link">TRIAD</a> 
-        
-        <nav class="main-nav">
-            <a href="index.html" class="nav-item">Home</a>
+
+    <header class="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo-link">TRIAD</a> 
+            <nav class="main-nav">
+                <a href="index.html" class="nav-item">Home</a>
             </nav>
-        
-        <a href="https://m.me/janjan.oates" target="_blank" class="messenger-icon">
-            Messenger
-        </a>
-    </div>
-</header>
+            <a href="https://m.me/janjan.oates" target="_blank" class="messenger-icon">
+                Messenger
+            </a>
+        </div>
+    </header>
 
     <div class="product-page-container">
         
         <div class="product-image-section">
             <p class="brand-small">XTIG</p>
-            <img src="product-image.jpg" alt="XTIG Void T-Shirt" class="main-product-image">
-            
+            <img src="product-image.jpg" alt="XTIG WINRE T-Shirt" class="main-product-image">
             <p class="brand-footer">XTIG</p> 
         </div>
         
@@ -34,43 +32,34 @@
             
             <p class="price-large">₱750.00 PHP</p>
             <p class="shipping-info">Shipping calculated at checkout.</p>
-            
-            <hr> <h1 class="product-title">XTIG ORIGINALS - "WINRE" - Unisex | Men | Women (OVERSIZED)</h1>
+            <hr>
+
+            <h1 class="product-title">XTIG ORIGINALS - "WINRE" - Unisex | Men | Women (OVERSIZED)</h1>
 
             <div class="size-options">
                 <p class="label">Size</p>
-                <div class="size-buttons">
-                    <button class="size-btn">S</button>
-                    <button class="size-btn">M</button>
-                    <button class="size-btn selected">L</button> 
-                    <button class="size-btn">XL</button>
-                    <button class="size-btn">2XL</button>
-                    <button class="size-btn">3XL</button>
+                <div class="size-buttons" id="size-options-container">
+                    <button class="size-btn" onclick="selectSize('S')">S</button>
+                    <button class="size-btn" onclick="selectSize('M')">M</button>
+                    <button class="size-btn" onclick="selectSize('L')">L</button> 
+                    <button class="size-btn" onclick="selectSize('XL')">XL</button>
+                    <button class="size-btn" onclick="selectSize('2XL')">2XL</button>
+                    <button class="size-btn" onclick="selectSize('3XL')">3XL</button>
                 </div>
             </div>
 
             <div class="quantity-selector">
                 <p class="label">Quantity</p>
                 <div class="quantity-input-box">
-                    <button>-</button>
-                    <input type="text" value="1" readonly>
-                    <button>+</button>
+                    <button onclick="changeQuantity(-1)">-</button>
+                    <input type="text" id="quantity-input" value="1" readonly>
+                    <button onclick="changeQuantity(1)">+</button>
                 </div>
             </div>
 
-            <button class="add-to-cart-btn">Add to cart</button>
-            <a 
-                href="https://m.me/janjan.oates?text=Gusto%20ko%20pong%20umorder%20ng%20WINRE%20Shirt.%20Pakisabi%20ang%20size%20na%20gusto%20ninyo." 
-                target="_blank" 
-                class="buy-now-btn"
-            >
-                Buy it now
-            </a>
+            <button class="add-to-cart-btn" onclick="createOrderLink()">Add to cart</button>
+            <button class="buy-now-btn" onclick="createOrderLink()">Buy it now</button>
             
             <p class="category-link">> XTIG Originals</p>
         </div>
     </div>
-    
-</body>
-
-</html>
