@@ -241,7 +241,7 @@ body {
     margin: 0;
     padding: 0;
     /* IBAHIN ITO PABALIK SA WHITE THEME: */
-    background-color: white; 
-    color: black; 
+    background-color: black; 
+    color: white; 
 }
 /* ... Siguraduhin na palitan din ang kulay ng text at button sa Header Bar pabalik sa black text sa white background... */
