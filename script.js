@@ -3,6 +3,8 @@ let selectedSize = '';
 const productName = "TRIAD WINRE Oversized T-Shirt"; 
 const productPrice = "₱750.00 PHP";
 const messengerID = "janjan.oates"; // Ang inyong FB Username
+const messengerLink = `https://m.me/${messengerID}?text=${encodedMessage}`;
+const messengerLinkBase = "https://www.facebook.com/messages/t/janjan.oates"; 
 
 // FUNCTION 1: Para sa pagpili ng Size
 function selectSize(size) {
@@ -35,23 +37,23 @@ function changeQuantity(amount) {
 }
 
 // FUNCTION 3: Ang gagawa ng Messenger Link at magre-redirect
+// FUNCTION 3: Ang gagawa ng Messenger Link at magre-redirect
 function createOrderLink() {
-    const quantity = document.getElementById('quantity-input').value;
+    // ... (Validation at Quantity code) ...
+
+    const quantity = document.getElementById('quantity-input').value; 
     
-    // Validation: Tiyakin na pumili ng size
-    if (selectedSize === '') {
-        alert("Pumili po muna ng SIZE bago mag-order!"); 
-        return; 
-    }
+    // ... (Validation code) ...
     
-    // Buuin ang order message
+    // Ang mensahe na may order details
     const message = `Gusto ko pong umorder ng ${productName}. Details: Size ${selectedSize}, Quantity ${quantity}, Price ${productPrice}. Paki-confirm po ng order ko.`;
     
-    // Gawing URL-friendly ang mensahe
     const encodedMessage = encodeURIComponent(message);
-
-    const messengerLink = `https://m.me/${messengerID}?text=${encodedMessage}`;
-
-    // I-open ang Messenger sa bagong tab
-    window.open(messengerLink, '_blank');
+    
+    // BAGUHIN ANG FINAL LINK CONSTRUCTION DITO:
+    // Pagsasamahin ang Base link at ang text parameter
+    const finalOrderLink = `${messengerLinkBase}?text=${encodedMessage}`;
+    
+    // I-open ang link
+    window.open(finalOrderLink, '_blank');
 }
