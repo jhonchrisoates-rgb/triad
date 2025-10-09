@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRIAD Checkout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo-link">TRIAD</a> 
+            <nav class="main-nav">
+                <a href="index.html" class="nav-item">Home</a>
+            </nav>
+            <a href="https://m.me/janjan.oates" target="_blank" class="messenger-icon">
+                Messenger
+            </a>
+        </div>
+    </header>
+    
+    <div class="checkout-container">
+        
+        <div class="form-section">
+            <h2 class="section-title">Contact</h2>
+            <input type="email" placeholder="Email" class="full-width-input" id="email-input">
+            <label><input type="checkbox"> Email me with news and offers</label>
+
+            <h2 class="section-title">Delivery</h2>
+            <select class="full-width-input"><option>Philippines</option></select>
+            
+            <div class="name-inputs">
+                <input type="text" placeholder="First name" id="first-name-input">
+                <input type="text" placeholder="Last name" id="last-name-input">
+            </div>
+
+            <input type="text" placeholder="House Lot Number, Street, Subdivision, Landmark" class="full-width-input" id="address-input">
+            <input type="text" placeholder="Barangay" class="full-width-input" id="barangay-input">
+            
+            <div class="city-inputs">
+                <input type="text" placeholder="Postal code">
+                <input type="text" placeholder="City">
+            </div>
+            
+            <input type="text" placeholder="Phone" class="full-width-input" id="phone-input">
+            <input type="text" placeholder="Region" class="full-width-input" value="Quezon">
+
+
+            <h2 class="section-title">Payment</h2>
+            <div class="payment-method">
+                <label class="cod-option">
+                    <input type="radio" name="payment" checked> 
+                    Cash on Delivery (COD)
+                </label>
+            </div>
+            
+            <button class="final-checkout-btn" onclick="createFinalOrderMessage()">
+                Pay with cash upon delivery
+            </button>
+        </div>
+
+        <div class="summary-section">
+            <h3 class="summary-item-title" id="summary-name">XTIG BLACK TSHIRT</h3>
+            <p class="summary-item-details" id="summary-size">XS</p>
+            <p class="summary-item-price" id="summary-price">₱750.00</p>
+            <p class="summary-item-details" id="summary-qty">Qty: 1</p>
+
+            <hr>
+            <p class="summary-line">Subtotal: <span class="summary-value" id="subtotal">₱750.00</span></p>
+            <p class="summary-line">Shipping: <span class="summary-value">Enter shipping address</span></p>
+            <hr>
+            <p class="summary-line total">Total: <span class="summary-value" id="final-total">₱750.00 PHP</span></p>
+
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Automatic na ilalagay ang item sa summary pagpasok sa page
+        window.onload = function() {
+            if (localStorage.getItem('orderItem')) {
+                const item = JSON.parse(localStorage.getItem('orderItem'));
+                document.getElementById('summary-name').innerText = item.name;
+                document.getElementById('summary-size').innerText = `Size: ${item.size}`;
+                document.getElementById('summary-qty').innerText = `Qty: ${item.qty}`;
+                document.getElementById('summary-price').innerText = `₱${item.price}.00`;
+                document.getElementById('subtotal').innerText = `₱${item.total}.00`;
+                document.getElementById('final-total').innerText = `₱${item.total}.00 PHP`;
+            } else {
+                // Kung walang laman, ibalik sa home
+                window.location.href = 'index.html';
+            }
+        };
+    </script>
+</body>
+</html>

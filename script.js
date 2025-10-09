@@ -1,16 +1,11 @@
 // === GLOBAL VARIABLES ===
-// Tiyakin na ang file na ito ay naka-link sa inyong winre-shirt.html bago mag </body>
 let selectedSize = ''; 
-const productName = "TRIAD WINRE Oversized T-Shirt"; 
-const productPrice = "₱750.00 PHP";
-// EKSKATONG Facebook Username/Link na natukoy natin
+// Tiyakin na ang inyong FB username ang ginagamit
 const messengerLinkBase = "https://www.facebook.com/messages/t/janjan.oates"; 
 
-
-// === FUNCTION 1: Para sa pagpili ng Size ===
+// FUNCTION 1: Para sa pagpili ng Size
 function selectSize(size) {
     selectedSize = size;
-    
     // Visual Feedback: Para magbago ang kulay ng piniling button
     const buttons = document.querySelectorAll('.size-btn');
     buttons.forEach(btn => btn.classList.remove('selected'));
@@ -21,13 +16,10 @@ function selectSize(size) {
     }
 }
 
-
-// === FUNCTION 2: Para sa Quantity +/- ===
+// FUNCTION 2: Para sa Quantity +/-
 function changeQuantity(amount) {
     const input = document.getElementById('quantity-input');
     let quantity = parseInt(input.value);
-    
-    // Iwasan na maging negative ang quantity
     quantity += amount;
     if (quantity < 1) {
         quantity = 1; 
@@ -36,25 +28,63 @@ function changeQuantity(amount) {
 }
 
 
-// === FUNCTION 3: Ang Smart Buy Button Logic ===
-function createOrderLink() {
+// === BAGONG FUNCTION: I-save ang order details bago mag-checkout ===
+function saveOrderDetails() {
+    // Kinukuha ang data mula sa HTML (Tiyakin na tama ito sa bawat Product Page)
+    const productName = "XTIG ORIGINALS - WINRE"; 
+    const unitPrice = 750; 
+    
     const quantity = document.getElementById('quantity-input').value;
     
-    // Validation: Tiyakin na pumili ng size
     if (selectedSize === '') {
-        alert("Pumili po muna ng SIZE bago mag-order!"); 
+        alert("Pumili po muna ng SIZE bago mag-checkout!"); 
         return; 
     }
     
-    // Dito ginagamit ang backtick ( ` ) para mabuo ang mensahe kasama ang data
-    const message = `Gusto ko pong umorder ng ${productName}. Details: Size ${selectedSize}, Quantity ${quantity}, Price ${productPrice}. Paki-confirm po ng order ko.`;
+    const total = unitPrice * parseInt(quantity);
     
-    // Ginagawang URL-friendly ang mensahe
+    // Ini-store ang data sa browser (LocalStorage)
+    const orderItem = {
+        name: productName,
+        size: selectedSize,
+        qty: quantity,
+        price: unitPrice,
+        total: total
+    };
+    
+    // Ini-store ang order details sa browser
+    localStorage.setItem('orderItem', JSON.stringify(orderItem));
+    
+    // Ngayon, ang link sa winre-shirt.html ay awtomatikong magdadala sa checkout.html
+    // Dahil ito ay naka-link na sa HTML <a> tag.
+}
+
+
+// === FINAL ORDER FUNCTION: Ito ang tinatawag ng Pay button sa checkout.html ===
+function createFinalOrderMessage() {
+    // Kukunin ang item details mula sa LocalStorage
+    const order = JSON.parse(localStorage.getItem('orderItem'));
+    
+    // Kukunin ang Delivery Details mula sa form
+    const firstName = document.getElementById('first-name-input').value;
+    const lastName = document.getElementById('last-name-input').value;
+    const address = document.getElementById('address-input').value;
+    const barangay = document.getElementById('barangay-input').value;
+    const phone = document.getElementById('phone-input').value;
+
+    // Validation
+    if (!firstName || !address || !phone) {
+        alert("Paki-fill up po muna ang First Name, Address, at Phone Number para sa delivery.");
+        return;
+    }
+
+    // Pagbuo ng Order Message
+    const message = `FINAL ORDER:\n\nITEM: ${order.name} | Size: ${order.size} | Qty: ${order.qty}\nTOTAL: ₱${order.total}.00 (COD)\n\nDELIVERY DETAILS:\nName: ${firstName} ${lastName}\nAddress: ${address}, ${barangay}\nPhone: ${phone}\n\nPaki-confirm po ang order. Salamat!`;
+    
     const encodedMessage = encodeURIComponent(message);
-    
-    // Dito binubuo ang final link gamit ang buong Facebook URL
     const finalOrderLink = `${messengerLinkBase}?text=${encodedMessage}`;
     
-    // I-open ang link
+    // I-open ang link at i-clear ang order details
     window.open(finalOrderLink, '_blank');
+    localStorage.removeItem('orderItem'); // Clear ang order pagkatapos ma-send
 }
