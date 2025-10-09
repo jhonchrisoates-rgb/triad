@@ -125,3 +125,50 @@
         margin: 20px auto;
     }
 }
+/* === STYLE PARA SA HEADER BAR === */
+.main-header {
+    background-color: white; /* Puti ang background */
+    border-bottom: 1px solid #eee; /* Manipis na linya sa ilalim */
+    padding: 15px 0;
+    position: sticky; /* Para hindi gumalaw kahit mag-scroll */
+    top: 0;
+    z-index: 100; /* Para nasa ibabaw ng lahat */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between; /* Hatiin ang space sa logo, nav, at icon */
+    align-items: center; /* I-sentro ang mga item nang patayo */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Para may space sa gilid */
+}
+
+.logo-link {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #555;
+    margin-left: 20px;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: black;
+}
+
+.messenger-icon {
+    background-color: black;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
