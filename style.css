@@ -245,3 +245,44 @@ body {
     color: white; 
 }
 /* ... Siguraduhin na palitan din ang kulay ng text at button sa Header Bar pabalik sa black text sa white background... */
+/* === STYLE PARA SA HERO BANNER === */
+.hero-banner {
+    position: relative; /* Para mailagay ang indicators sa ibabaw ng image */
+    width: 100%;
+    overflow: hidden; /* Itago ang anumang lumabas sa container */
+}
+
+.banner-image {
+    width: 100%;
+    /* Gawing 600px ang height para hindi masyadong mataas (Pwede niyo itong baguhin) */
+    height: 600px; 
+    object-fit: cover; /* Para hindi ma-stretch ang image at mag-fit sa area */
+    display: block;
+}
+
+/* Indicators (Ang Dots sa Ilalim) */
+.banner-indicators {
+    position: absolute; /* Ilagay sa ibabaw ng image */
+    bottom: 20px;
+    left: 50%; /* I-sentro ang dots */
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%; /* Gawing bilog */
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #fff; /* White ang kulay ng active dot */
+}
+
+/* Ayusin ang margin ng New Release heading para bumaba sa ilalim ng banner */
+h1 {
+    margin-top: 50px; 
+}
