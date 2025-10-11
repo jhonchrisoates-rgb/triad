@@ -20,6 +20,49 @@
             </a>
         </div>
     </header>
+     <div class="product-page-container">
+        
+        <div class="product-image-section">
+            <p class="brand-small">TRIAD</p>
+            <img src="shit.jpg" alt="TRIAD WINRE T-Shirt" class="main-product-image">
+            <p class="brand-footer">TRIAD</p> 
+        </div>
+        
+        <div class="product-details-section">
+            
+            <p class="price-large">₱800.00 PHP</p>
+            <p class="shipping-info">Shipping calculated at checkout.</p>
+            <hr>
+
+            <h1 class="product-title">TRIAD ORIGINALS - "WINRE" - Unisex | Men | Women (OVERSIZED)</h1>
+
+            <div class="size-options">
+                <p class="label">Size</p>
+                <div class="size-buttons" id="size-options-container">
+                    <button class="size-btn" onclick="selectSize('S')">S</button>
+                    <button class="size-btn" onclick="selectSize('M')">M</button>
+                    <button class="size-btn" onclick="selectSize('L')">L</button> 
+                    <button class="size-btn" onclick="selectSize('XL')">XL</button>
+                    <button class="size-btn" onclick="selectSize('2XL')">2XL</button>
+                    <button class="size-btn" onclick="selectSize('3XL')">3XL</button>
+                </div>
+            </div>
+
+            <div class="quantity-selector">
+                <p class="label">Quantity</p>
+                <div class="quantity-input-box">
+                    <button onclick="changeQuantity(-1)">-</button>
+                    <input type="text" id="quantity-input" value="1" readonly>
+                    <button onclick="changeQuantity(1)">+</button>
+                </div>
+            </div>
+
+            <button class="add-to-cart-btn" onclick="createOrderLink()">Add to cart</button>
+            <button class="buy-now-btn" onclick="createOrderLink()">Buy it now</button>
+            
+            <p class="category-link">> TRIAD Originals</p>
+        </div>
+    
 
     <div class="product-page-container">
         
