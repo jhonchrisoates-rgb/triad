@@ -1,11 +1,8 @@
 // === GLOBAL VARIABLES ===
-// Tiyakin na ang file na ito ay naka-link sa inyong winre-shirt.html bago mag </body>
 let selectedSize = ''; 
 const productName = "TRIAD WINRE Oversized T-Shirt"; 
-const productPrice = "₱750.00 PHP";
-// EKSKATONG Facebook Username/Link na natukoy natin
-const messengerLinkBase = "https://m.me/janjan.oates";
-
+const productPrice = 750; // Ginawa nating number para sa computation
+const messengerLinkBase = "https://m.me/janjan.oates"; 
 
 // === FUNCTION 1: Para sa pagpili ng Size ===
 function selectSize(size) {
@@ -21,13 +18,11 @@ function selectSize(size) {
     }
 }
 
-
 // === FUNCTION 2: Para sa Quantity +/- ===
 function changeQuantity(amount) {
     const input = document.getElementById('quantity-input');
     let quantity = parseInt(input.value);
     
-    // Iwasan na maging negative ang quantity
     quantity += amount;
     if (quantity < 1) {
         quantity = 1; 
@@ -36,85 +31,58 @@ function changeQuantity(amount) {
 }
 
 
-// === FUNCTION 3: Ang Smart Buy Button Logic ===
-function createOrderLink() {
-    const quantity = document.getElementById('quantity-input').value;
-    
-    // Validation: Tiyakin na pumili ng size
-    if (selectedSize === '') {
-        alert("Pumili po muna ng SIZE bago mag-order!"); 
-        return; 
-    }
-    
-    // Dito ginagamit ang backtick ( ` ) para mabuo ang mensahe kasama ang data
-    const message = `Gusto ko pong umorder ng ${productName}. Details: Size ${selectedSize}, Quantity ${quantity}, Price ${productPrice}. Paki-confirm po ng order ko.`;
-    
-    // Ginagawang URL-friendly ang mensahe
-    const encodedMessage = encodeURIComponent(message);
-    
-    // Dito binubuo ang final link gamit ang buong Facebook URL
-    const finalOrderLink = `${messengerLinkBase}?text=${encodedMessage}`;
-    
-    // I-open ang link
-    window.open(finalOrderLink, '_blank');
-}
-// Function na tatawagin ng BUY IT NOW button
-function executeBuyNow() {
-    const productName = "TRIAD ORIGINALS - WINRE"; 
-    const unitPrice = 750; 
-    
+// === CORE LOGIC: SAVE AND REDIRECT (Tinatawag ng BUY IT NOW sa winre-shirt.html) ===
+function saveOrderAndRedirectToCheckout() {
     const quantity = document.getElementById('quantity-input').value;
     
     if (selectedSize === '') {
         alert("Pumili po muna ng SIZE bago mag-checkout!"); 
-        return false; // HINDI MAG-RE-REDIRECT
+        return false; // HINDI MAGRE-REDIRECT
     }
     
-    const total = unitPrice * parseInt(quantity);
+    const total = productPrice * parseInt(quantity);
     
-    // I-store ang order details
+    // I-store ang order details sa browser (LOCAL STORAGE)
     const orderItem = {
         name: productName,
         size: selectedSize,
         qty: quantity,
-        price: unitPrice,
+        price: productPrice,
         total: total
     };
     
     localStorage.setItem('orderItem', JSON.stringify(orderItem));
     
-    return true; // DITO LANG MAG-RE-REDIRECT ang <a> tag
+    // Ipagpapatuloy ang redirect sa checkout.html dahil nasa <a> tag na ang href
+    return true; 
 }
-// === FINAL ORDER FUNCTION: Ito ang tinatawag ng Pay button sa checkout.html ===
-function saveOrderDetailsOnly() {
-    // Kukunin ang item details mula sa LocalStorage
+
+
+// === FINAL CHECKOUT LOGIC: Magse-send ng Order sa Messenger (Tinatawag ng Pay button sa checkout.html) ===
+function createFinalOrderMessage() {
+    // 1. Kukunin ang item details mula sa LocalStorage
     const order = JSON.parse(localStorage.getItem('orderItem'));
     
-    // Kukunin ang Delivery Details mula sa form
+    // 2. Kukunin ang Delivery Details mula sa form
     const firstName = document.getElementById('first-name-input').value;
     const lastName = document.getElementById('last-name-input').value;
     const address = document.getElementById('address-input').value;
     const barangay = document.getElementById('barangay-input').value;
     const phone = document.getElementById('phone-input').value;
 
-    // Validation: Tiyakin na pinunan ang mga kritikal na field
+    // 3. Validation: Tiyakin na pinunan ang mga kritikal na field
     if (!firstName || !address || !phone) {
         alert("Paki-fill up po muna ang First Name, Address, at Phone Number para sa delivery.");
         return;
     }
 
-    // Pagbuo ng Order Message (Gamit ang backticks)
+    // 4. Pagbuo ng Order Message
     const message = `FINAL ORDER:\n\nITEM: ${order.name} | Size: ${order.size} | Qty: ${order.qty}\nTOTAL: ₱${order.total}.00 (COD)\n\nDELIVERY DETAILS:\nName: ${firstName} ${lastName}\nAddress: ${address}, ${barangay}\nPhone: ${phone}\nPayment: COD\n\nPaki-confirm po ang order at shipping fee. Salamat!`;
     
     const encodedMessage = encodeURIComponent(message);
-    const messengerLink = `https://www.facebook.com/messages/t/janjan.oates?text=${encodedMessage}`;
+    const messengerLink = `${messengerLinkBase}?text=${encodedMessage}`;
     
-    // I-open ang link at i-clear ang order details
+    // 5. I-open ang link at i-clear ang order details
     window.open(messengerLink, '_blank');
-    
-    // Opsyonal: I-clear ang order para walang duplicate
     localStorage.removeItem('orderItem'); 
-    
-    // Opsyonal: Maaari niyo itong i-redirect sa "Thank You" page
-    // window.location.href = 'index.html'; 
 }
