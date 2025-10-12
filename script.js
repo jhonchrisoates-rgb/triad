@@ -4,7 +4,7 @@ let selectedSize = '';
 const productName = "TRIAD WINRE Oversized T-Shirt"; 
 const productPrice = "₱750.00 PHP";
 // EKSKATONG Facebook Username/Link na natukoy natin
-const messengerLinkBase = "https://m.me/janjan.oates";  
+const messengerLinkBase = "https://m.me/janjan.oates";
 
 
 // === FUNCTION 1: Para sa pagpili ng Size ===
