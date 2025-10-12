@@ -86,7 +86,7 @@ function executeBuyNow() {
     return true; // DITO LANG MAG-RE-REDIRECT ang <a> tag
 }
 // === FINAL ORDER FUNCTION: Ito ang tinatawag ng Pay button sa checkout.html ===
-function createFinalOrderMessage() {
+function saveOrderDetailsOnly() {
     // Kukunin ang item details mula sa LocalStorage
     const order = JSON.parse(localStorage.getItem('orderItem'));
     
