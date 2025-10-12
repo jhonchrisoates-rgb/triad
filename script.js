@@ -85,3 +85,36 @@ function executeBuyNow() {
     
     return true; // DITO LANG MAG-RE-REDIRECT ang <a> tag
 }
+// === FINAL ORDER FUNCTION: Ito ang tinatawag ng Pay button sa checkout.html ===
+function createFinalOrderMessage() {
+    // Kukunin ang item details mula sa LocalStorage
+    const order = JSON.parse(localStorage.getItem('orderItem'));
+    
+    // Kukunin ang Delivery Details mula sa form
+    const firstName = document.getElementById('first-name-input').value;
+    const lastName = document.getElementById('last-name-input').value;
+    const address = document.getElementById('address-input').value;
+    const barangay = document.getElementById('barangay-input').value;
+    const phone = document.getElementById('phone-input').value;
+
+    // Validation: Tiyakin na pinunan ang mga kritikal na field
+    if (!firstName || !address || !phone) {
+        alert("Paki-fill up po muna ang First Name, Address, at Phone Number para sa delivery.");
+        return;
+    }
+
+    // Pagbuo ng Order Message (Gamit ang backticks)
+    const message = `FINAL ORDER:\n\nITEM: ${order.name} | Size: ${order.size} | Qty: ${order.qty}\nTOTAL: ₱${order.total}.00 (COD)\n\nDELIVERY DETAILS:\nName: ${firstName} ${lastName}\nAddress: ${address}, ${barangay}\nPhone: ${phone}\nPayment: COD\n\nPaki-confirm po ang order at shipping fee. Salamat!`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const messengerLink = `https://www.facebook.com/messages/t/janjan.oates?text=${encodedMessage}`;
+    
+    // I-open ang link at i-clear ang order details
+    window.open(messengerLink, '_blank');
+    
+    // Opsyonal: I-clear ang order para walang duplicate
+    localStorage.removeItem('orderItem'); 
+    
+    // Opsyonal: Maaari niyo itong i-redirect sa "Thank You" page
+    // window.location.href = 'index.html'; 
+}
