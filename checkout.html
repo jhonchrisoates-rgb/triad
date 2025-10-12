@@ -61,23 +61,23 @@
         </div>
 
         <div class="summary-section">
-            <h3 class="summary-item-title" id="summary-name">XTIG BLACK TSHIRT</h3>
-            <p class="summary-item-details" id="summary-size">XS</p>
-            <p class="summary-item-price" id="summary-price">₱750.00</p>
-            <p class="summary-item-details" id="summary-qty">Qty: 1</p>
+            <h3 class="summary-item-title" id="summary-name">Item Name</h3>
+            <p class="summary-item-details" id="summary-size">Size: L</p>
+            <p class="summary-item-price" id="summary-price">₱0.00</p>
+            <p class="summary-item-details" id="summary-qty">Qty: 0</p>
 
             <hr>
-            <p class="summary-line">Subtotal: <span class="summary-value" id="subtotal">₱750.00</span></p>
+            <p class="summary-line">Subtotal: <span class="summary-value" id="subtotal">₱0.00</span></p>
             <p class="summary-line">Shipping: <span class="summary-value">Enter shipping address</span></p>
             <hr>
-            <p class="summary-line total">Total: <span class="summary-value" id="final-total">₱750.00 PHP</span></p>
+            <p class="summary-line total">Total: <span class="summary-value" id="final-total">₱0.00 PHP</span></p>
 
         </div>
     </div>
     
     <script src="script.js"></script>
     <script>
-        // Automatic na ilalagay ang item sa summary pagpasok sa page
+        // FUNCTION: Automatic na ilalagay ang item sa summary pagpasok sa page
         window.onload = function() {
             if (localStorage.getItem('orderItem')) {
                 const item = JSON.parse(localStorage.getItem('orderItem'));

@@ -58,3 +58,30 @@ function createOrderLink() {
     // I-open ang link
     window.open(finalOrderLink, '_blank');
 }
+// Function na tatawagin ng BUY IT NOW button
+function executeBuyNow() {
+    const productName = "TRIAD ORIGINALS - WINRE"; 
+    const unitPrice = 750; 
+    
+    const quantity = document.getElementById('quantity-input').value;
+    
+    if (selectedSize === '') {
+        alert("Pumili po muna ng SIZE bago mag-checkout!"); 
+        return false; // HINDI MAG-RE-REDIRECT
+    }
+    
+    const total = unitPrice * parseInt(quantity);
+    
+    // I-store ang order details
+    const orderItem = {
+        name: productName,
+        size: selectedSize,
+        qty: quantity,
+        price: unitPrice,
+        total: total
+    };
+    
+    localStorage.setItem('orderItem', JSON.stringify(orderItem));
+    
+    return true; // DITO LANG MAG-RE-REDIRECT ang <a> tag
+}
