@@ -286,3 +286,104 @@ body {
 h1 {
     margin-top: 50px; 
 }
+/* === STYLE PARA SA CHECKOUT PAGE (checkout.html) === */
+
+.checkout-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    gap: 40px; /* Pagitan ng form at summary */
+}
+
+/* KALIWANG BAHAGI: FORM */
+.form-section {
+    flex: 6; /* Mas malaking space para sa form */
+}
+
+.section-title {
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.form-section input[type="text"], 
+.form-section input[type="email"], 
+.form-section select {
+    background-color: #111; /* Darker input background */
+    color: white;
+    border: 1px solid #444;
+    padding: 12px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.full-width-input {
+    width: 100%;
+}
+
+.name-inputs, .city-inputs {
+    display: flex;
+    gap: 10px;
+}
+.name-inputs input, .city-inputs input {
+    width: 50%;
+}
+
+/* Final Button */
+.final-checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: white; 
+    color: black;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* KANANG BAHAGI: SUMMARY */
+.summary-section {
+    flex: 4; /* Mas maliit na space */
+    background-color: #111; /* Dark background para sa summary box */
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.summary-item-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.summary-item-details, .summary-item-price {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.summary-line.total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+}
+
+/* Ayusin ang payment radio button color */
+.cod-option {
+    display: block;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #222;
+    color: white;
+}
