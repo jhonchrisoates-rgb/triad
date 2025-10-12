@@ -6,7 +6,6 @@
     <title>TRIAD Shirt - Buy Now</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<script src="script.js"></script>
 <body>
 
     <header class="main-header">
@@ -57,10 +56,15 @@
                     <button onclick="changeQuantity(1)">+</button>
                 </div>
             </div>
-
-            <button class="add-to-cart-btn" onclick="createOrderLink()">Add to cart</button>
-            <button class="buy-now-btn" onclick="createOrderLink()">Buy it now</button>
+            
+            <button class="buy-now-btn" onclick="saveOrderDetailsAndRedirect()">
+                Buy it now
+            </button>
             
             <p class="category-link">> TRIAD Originals</p>
         </div>
     </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
