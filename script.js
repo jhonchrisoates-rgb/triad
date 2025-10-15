@@ -2,8 +2,8 @@
 let selectedSize = ''; 
 // Ginawa nating number para sa computation
 const messengerLinkBase = "https://m.me/triadclothingph"; 
-const productName = "ERROR: Product Name Not Set"; 
-const productPrice = 0; 
+let productName; 
+let productPrice;
 // === FUNCTION 1: Para sa pagpili ng Size ===
 function selectSize(size) {
     selectedSize = size;
