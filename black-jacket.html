@@ -58,9 +58,20 @@
                 </div>
             </div>
 
-            <button class="add-to-cart-btn" onclick="createOrderLink()">Add to cart</button>
-            <button class="buy-now-btn" onclick="createOrderLink()">Buy it now</button>
+           <a 
+    href="checkout.html" 
+    class="buy-now-btn"
+    onclick="return saveOrderAndRedirectToCheckout()" 
+>
+    Buy it now
+</a>
             
             <p class="category-link">> TRIAD Originals</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
         </div>
     </div>
