@@ -2,7 +2,7 @@
 let selectedSize = ''; 
 const productName = "TRIAD WINRE Oversized T-Shirt"; 
 const productPrice = 750; // Ginawa nating number para sa computation
-const messengerLinkBase = "https://m.me/janjan.oates"; 
+const messengerLinkBase = "https://www.facebook.com/settings?tab=profile&section=username"; 
 
 // === FUNCTION 1: Para sa pagpili ng Size ===
 function selectSize(size) {
