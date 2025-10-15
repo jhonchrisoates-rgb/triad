@@ -1,12 +1,13 @@
 // === GLOBAL VARIABLES ===
 let selectedSize = ''; 
-const productName = "TRIAD WINRE Oversized T-Shirt"; 
-const productPrice = 750; // Ginawa nating number para sa computation
+// Ginawa nating number para sa computation
 const messengerLinkBase = "https://m.me/triadclothingph"; 
-
+const productName = "ERROR: Product Name Not Set"; 
+const productPrice = 0; 
 // === FUNCTION 1: Para sa pagpili ng Size ===
 function selectSize(size) {
     selectedSize = size;
+     
     
     // Visual Feedback: Para magbago ang kulay ng piniling button
     const buttons = document.querySelectorAll('.size-btn');
