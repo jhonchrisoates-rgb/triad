@@ -1,392 +1,6 @@
-/* === 1. GENERAL RESET & BASE STYLES === */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    /* Base for Dark Mode */
-    background-color: #000; 
-    color: #fff; /* White text */
-}
-
-/* Para hindi lumabas ang underline sa mga link at manatiling white ang text */
-a {
-    text-decoration: none;
-    color: inherit; 
-}
-a:hover {
-    color: #bbb; /* Bahagyang mag-iiba ang kulay kapag hinawakan ng mouse */
-}
-
-/* === 2. HEADER BAR STYLES === */
-.main-header {
-    background-color: #000; /* BLACK ang Header */
-    border-bottom: 1px solid #333; /* Dark Gray ang linya */
-    padding: 15px 0;
-    position: sticky; 
-    top: 0;
-    z-index: 100; 
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px; 
-}
-
-.logo-link, .main-nav a {
-    color: white; /* White ang links */
-    font-weight: bold;
-}
-
-.logo-link {
-    font-size: 24px;
-}
-
-.main-nav a {
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
-}
-
-.messenger-icon {
-    background-color: white; /* White ang background ng Messenger Button */
-    color: black; /* Black ang text */
-    padding: 8px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* === 3. PRODUCT GRID STYLES (Para sa index.html) === */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 30px; 
-    width: 90%;
-    max-width: 1200px;
-    margin: 50px auto; 
-    padding: 20px 0;
-}
-
-.product-item {
-    text-align: center;
-    padding: 10px;
-}
-
-.product-photo {
-    width: 100%;
-    height: auto;
-    display: block; 
-}
-
-.brand-name {
-    margin: 10px 0 0 0;
-    font-size: 10px; 
-    color: #aaa; /* Grayish white */
-}
-
-.product-name {
-    margin: 5px 0;
-    font-size: 12px;
-    line-height: 1.4;
-    font-weight: bold;
-    color: white; 
-}
-
-.price {
-    margin: 5px 0 15px 0;
-    font-size: 14px;
-    color: white;
-    font-weight: 600;
-}
-
-.order-button {
-    display: inline-block;
-    padding: 8px 15px;
-    margin-top: 5px;
-    background-color: white; /* White button sa dark background */
-    color: black;
-    border-radius: 3px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-/* === 4. PRODUCT DETAIL PAGE STYLES (Para sa winre-shirt.html) === */
-
-.product-page-container {
-    display: flex;
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-    gap: 60px; /* Mas malaking space sa gitna */
-}
-
-.product-image-section {
-    flex: 6; 
-    text-align: center;
-}
-
-.product-details-section {
-    flex: 4; 
-    padding: 0 20px;
-}
-
-.main-product-image {
-    width: 100%;
-    height: auto;
-}
-
-/* Presyo at Shipping */
-.price-large {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.shipping-info {
-    font-size: 14px;
-    color: #aaa;
-    margin-bottom: 20px;
-}
-
-hr {
-    border-color: #444; /* Darker line */
-    margin-bottom: 25px;
-}
-
-.product-title {
-    font-size: 20px;
-    font-weight: 500;
-    margin: 15px 0;
-}
-
-/* Size and Quantity Options */
-.size-options, .quantity-selector {
-    margin-bottom: 20px;
-}
-
-.size-buttons button {
-    padding: 10px 15px;
-    margin: 5px;
-    border: 1px solid #777;
-    background-color: #000;
-    color: white;
-    cursor: pointer;
-}
-
-.size-buttons .selected {
-    border-color: white; /* White ang border ng piniling size */
-    font-weight: bold;
-}
-
-.quantity-input-box {
-    display: flex;
-    align-items: center;
-    width: 120px;
-    border: 1px solid #777;
-}
-
-.quantity-input-box input {
-    background-color: #000;
-    color: white;
-    border: none;
-    border-left: 1px solid #777;
-    border-right: 1px solid #777;
-}
-
-
-/* Buy Buttons */
-.add-to-cart-btn, .buy-now-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 15px;
-    margin-top: 10px;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 16px;
-    box-sizing: border-box; 
-    border: 1px solid white; /* White border */
-}
-
-.add-to-cart-btn {
-    background-color: #000;
-    color: white;
-}
-
-.buy-now-btn {
-    background-color: #fff; /* White background */
-    color: black; /* Black text */
-    border: 1px solid white;
-}
-
-/* === MOBILE RESPONSIVENESS === */
-@media (max-width: 768px) {
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    .product-page-container {
-        flex-direction: column;
-        margin: 20px auto;
-    }
-}
-/* === GENERAL RESET & BASE STYLES === */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    /* IBAHIN ITO PABALIK SA WHITE THEME: */
-    background-color: black; 
-    color: white; 
-}
-/* ... Siguraduhin na palitan din ang kulay ng text at button sa Header Bar pabalik sa black text sa white background... */
-/* === STYLE PARA SA HERO BANNER === */
-.hero-banner {
-    position: relative; /* Para mailagay ang indicators sa ibabaw ng image */
-    width: 100%;
-    overflow: hidden; /* Itago ang anumang lumabas sa container */
-}
-
-.banner-image {
-    width: 100%;
-    /* Gawing 600px ang height para hindi masyadong mataas (Pwede niyo itong baguhin) */
-    height: 600px; 
-    object-fit: cover; /* Para hindi ma-stretch ang image at mag-fit sa area */
-    display: block;
-}
-
-/* Indicators (Ang Dots sa Ilalim) */
-.banner-indicators {
-    position: absolute; /* Ilagay sa ibabaw ng image */
-    bottom: 20px;
-    left: 50%; /* I-sentro ang dots */
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-}
-
-.dot {
-    height: 10px;
-    width: 10px;
-    background-color: #bbb;
-    border-radius: 50%; /* Gawing bilog */
-    cursor: pointer;
-}
-
-.dot.active {
-    background-color: #fff; /* White ang kulay ng active dot */
-}
-
-/* Ayusin ang margin ng New Release heading para bumaba sa ilalim ng banner */
-h1 {
-    margin-top: 50px; 
-}
-/* === STYLE PARA SA CHECKOUT PAGE (checkout.html) === */
-
-.checkout-container {
-    display: flex;
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-    gap: 40px; /* Pagitan ng form at summary */
-}
-
-/* KALIWANG BAHAGI: FORM */
-.form-section {
-    flex: 6; /* Mas malaking space para sa form */
-}
-
-.section-title {
-    font-size: 18px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
-
-.form-section input[type="text"], 
-.form-section input[type="email"], 
-.form-section select {
-    background-color: #111; /* Darker input background */
-    color: white;
-    border: 1px solid #444;
-    padding: 12px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    border-radius: 4px;
-}
-
-.full-width-input {
-    width: 100%;
-}
-
-.name-inputs, .city-inputs {
-    display: flex;
-    gap: 10px;
-}
-.name-inputs input, .city-inputs input {
-    width: 50%;
-}
-
-/* Final Button */
-.final-checkout-btn {
-    width: 100%;
-    padding: 15px;
-    background-color: white; 
-    color: black;
-    border: none;
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-/* KANANG BAHAGI: SUMMARY */
-.summary-section {
-    flex: 4; /* Mas maliit na space */
-    background-color: #111; /* Dark background para sa summary box */
-    padding: 20px;
-    border-radius: 6px;
-}
-
-.summary-item-title {
-    font-size: 16px;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.summary-item-details, .summary-item-price {
-    font-size: 14px;
-    color: #ccc;
-}
-
-.summary-line {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-.summary-line.total {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 15px;
-    border-top: 1px solid #333;
-    padding-top: 10px;
-}
-
-/* Ayusin ang payment radio button color */
-.cod-option {
-    display: block;
-    padding: 10px;
-    border: 1px solid #444;
-    border-radius: 4px;
-    background-color: #222;
-    color: white;
-}
+/* =========================
+   1. RESET & BASE
+========================= */
 * {
     margin: 0;
     padding: 0;
@@ -395,147 +9,303 @@ h1 {
 }
 
 body {
-    background: #fff;
-    color: #000;
+    background-color: #000;
+    color: #fff;
 }
 
-/* HEADER */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #bbb;
+}
+
+/* =========================
+   2. HEADER
+========================= */
 .main-header {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
+    background: #000;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo-link {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
-    text-decoration: none;
-    color: #000;
 }
 
-.messenger-btn {
+.main-nav a {
+    margin-left: 20px;
     font-size: 14px;
-    text-decoration: none;
+}
+
+.messenger-icon {
+    background: #fff;
     color: #000;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-/* LAYOUT */
-.product-page {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
+/* =========================
+   3. HERO BANNER
+========================= */
+.hero-banner {
+    position: relative;
 }
 
-/* IMAGE */
-.product-image img {
+.banner-image {
     width: 100%;
-    border-radius: 10px;
+    height: 600px;
+    object-fit: cover;
 }
 
-/* DETAILS */
-.product-details {
-    margin-top: 20px;
+.banner-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #777;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: #fff;
+}
+
+/* =========================
+   4. PRODUCT GRID (HOME)
+========================= */
+.product-grid {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.product-item {
+    text-align: center;
+}
+
+.product-photo {
+    width: 100%;
+}
+
+.brand-name {
+    font-size: 10px;
+    color: #aaa;
+    margin-top: 10px;
+}
+
+.product-name {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0;
 }
 
 .price {
-    font-size: 22px;
+    font-size: 14px;
     font-weight: bold;
 }
 
-.shipping {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.title {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.title span {
-    display: block;
-    font-size: 14px;
-    color: #666;
-}
-
-/* OPTIONS */
-.option {
-    margin-bottom: 20px;
-}
-
-.label {
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-/* SIZE BUTTONS */
-.sizes {
+/* =========================
+   5. PRODUCT PAGE
+========================= */
+.product-page-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
     display: flex;
-    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.product-image-section {
+    flex: 6;
+    text-align: center;
+}
+
+.main-product-image {
+    width: 100%;
+}
+
+.product-details-section {
+    flex: 4;
+}
+
+.price-large {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.shipping-info {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.product-title {
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+/* SIZE */
+.size-buttons button {
+    padding: 10px 14px;
+    margin: 5px;
+    border: 1px solid #777;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.size-buttons .selected {
+    border-color: #fff;
+}
+
+/* QTY */
+.quantity-input-box {
+    display: flex;
+    width: 120px;
+    border: 1px solid #777;
+}
+
+.quantity-input-box button {
+    width: 40px;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.quantity-input-box input {
+    width: 40px;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    border: none;
+}
+
+/* BUY */
+.buy-now-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+/* =========================
+   6. CHECKOUT PAGE
+========================= */
+.checkout-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    display: flex;
+    gap: 40px;
+}
+
+.form-section {
+    flex: 6;
+}
+
+.section-title {
+    margin: 25px 0 10px;
+    font-size: 18px;
+}
+
+.full-width-input,
+.form-section select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #111;
+    border: 1px solid #444;
+    color: #fff;
+}
+
+.name-inputs {
+    display: flex;
     gap: 10px;
 }
 
-.size-btn {
-    padding: 10px 14px;
-    border: 1px solid #000;
-    background: #fff;
-    cursor: pointer;
+.name-inputs input {
+    width: 50%;
 }
 
-.size-btn.active {
-    background: #000;
-    color: #fff;
-}
-
-/* QUANTITY */
-.qty-box {
-    display: flex;
-    width: 120px;
-    border: 1px solid #000;
-}
-
-.qty-box button {
-    width: 40px;
-    border: none;
-    background: #fff;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.qty-box input {
-    width: 40px;
-    text-align: center;
-    border: none;
-}
-
-/* BUY BUTTON */
-.buy-btn {
+.final-checkout-btn {
     width: 100%;
     padding: 15px;
-    background: #000;
-    color: #fff;
+    margin-top: 20px;
+    background: #fff;
+    color: #000;
+    font-weight: bold;
     border: none;
-    font-size: 16px;
     cursor: pointer;
 }
 
-/* DESKTOP */
-@media (min-width: 768px) {
-    .product-page {
-        flex-direction: row;
-        gap: 40px;
-        max-width: 1100px;
-        margin: auto;
+.summary-section {
+    flex: 4;
+    background: #111;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.summary-line.total {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #333;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =========================
+   7. MOBILE
+========================= */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .product-image,
-    .product-details {
-        width: 50%;
+    .product-page-container,
+    .checkout-container {
+        flex-direction: column;
+    }
+
+    .banner-image {
+        height: 350px;
     }
 }
