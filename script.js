@@ -81,9 +81,8 @@ function saveOrderAndRedirectToCheckout() {
 // ============================
 function createFinalOrderMessage() {
     const order = JSON.parse(localStorage.getItem('orderItem'));
-
     if (!order) {
-        alert("Walang order na nakita. Bumalik po sa product page.");
+        alert("No order found.");
         return;
     }
 
@@ -92,32 +91,41 @@ function createFinalOrderMessage() {
     const address = document.getElementById('address-input').value.trim();
     const barangay = document.getElementById('barangay-input').value.trim();
     const phone = document.getElementById('phone-input').value.trim();
+    const payment = document.querySelector('input[name="payment"]:checked').value;
 
     if (!firstName || !address || !phone) {
-        alert("Paki-fill up ang First Name, Address, at Phone Number.");
+        alert("Please fill in required fields.");
         return;
     }
 
-    const message = 
+    const paymentNote = payment === 'GCash'
+        ? 'GCash (Send payment screenshot after confirmation)'
+        : 'Cash on Delivery';
+
+    const message =
 `FINAL ORDER
 
 ITEM: ${order.name}
 Size: ${order.size}
-Quantity: ${order.qty}
-TOTAL: ₱${order.total}.00 (COD)
+Qty: ${order.qty}
+
+Subtotal: ₱${order.total}.00
+Shipping: ₱${order.shipping}.00
+TOTAL: ₱${order.grandTotal}.00
 
 DELIVERY DETAILS:
 Name: ${firstName} ${lastName}
 Address: ${address}, ${barangay}
 Phone: ${phone}
 
-Payment: COD
+Payment Method: ${paymentNote}
 
-Paki-confirm po ang order at shipping fee. Salamat!`;
+Please confirm availability & shipping. Thank you!`;
 
-    const messengerLink = 
-        `${messengerLinkBase}?text=${encodeURIComponent(message)}`;
+    window.open(
+        `${messengerLinkBase}?text=${encodeURIComponent(message)}`,
+        '_blank'
+    );
 
-    window.open(messengerLink, '_blank');
     localStorage.removeItem('orderItem');
 }

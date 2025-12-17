@@ -8,90 +8,115 @@
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="header-content">
-            <a href="index.html" class="logo-link">TRIAD</a> 
-            <nav class="main-nav">
-                <a href="index.html" class="nav-item">Home</a>
-            </nav>
-            <a href="https://m.me/triadclothingph" target="_blank" class="messenger-icon">
-                Messenger
-            </a>
-        </div>
-    </header>
-    
-    <div class="checkout-container">
-        
-        <div class="form-section">
-            <h2 class="section-title">Contact</h2>
-            <input type="email" placeholder="Email" class="full-width-input" id="email-input">
-            <label><input type="checkbox"> Email me with news and offers</label>
-
-            <h2 class="section-title">Delivery</h2>
-            <select class="full-width-input"><option>Philippines</option></select>
-            
-            <div class="name-inputs">
-                <input type="text" placeholder="First name" id="first-name-input">
-                <input type="text" placeholder="Last name" id="last-name-input">
-            </div>
-
-            <input type="text" placeholder="House Lot Number, Street, Subdivision, Landmark" class="full-width-input" id="address-input">
-            <input type="text" placeholder="Barangay" class="full-width-input" id="barangay-input">
-            
-            <div class="city-inputs">
-                <input type="number" placeholder="Postal code">
-                <input type="text" placeholder="City">
-            </div>
-            
-            <input type="number" placeholder="Phone" class="full-width-input" id="phone-input">
-            <input type="text" placeholder="Region" class="full-width-input" value="Quezon">
-
-
-            <h2 class="section-title">Payment</h2>
-            <div class="payment-method">
-                <label class="cod-option">
-                    <input type="radio" name="payment" checked> 
-                    Cash on Delivery (COD)
-                </label>
-            </div>
-            
-            <button class="final-checkout-btn" onclick="createFinalOrderMessage()">
-                Pay with cash upon delivery
-            </button>
-        </div>
-
-        <div class="summary-section">
-            <h3 class="summary-item-title" id="summary-name">Item Name</h3>
-            <p class="summary-item-details" id="summary-size">Size: L</p>
-            <p class="summary-item-price" id="summary-price">₱0.00</p>
-            <p class="summary-item-details" id="summary-qty">Qty: 0</p>
-
-            <hr>
-            <p class="summary-line">Subtotal: <span class="summary-value" id="subtotal">₱0.00</span></p>
-            <p class="summary-line">Shipping: <span class="summary-value">Enter shipping address</span></p>
-            <hr>
-            <p class="summary-line total">Total: <span class="summary-value" id="final-total">₱0.00 PHP</span></p>
-
-        </div>
+<header class="main-header">
+    <div class="header-content">
+        <a href="index.html" class="logo-link">TRIAD</a>
+        <a href="https://m.me/triadclothingph" target="_blank" class="messenger-icon">
+            Messenger
+        </a>
     </div>
-    
-    <script src="script.js"></script>
-    <script>
-        // FUNCTION: Automatic na ilalagay ang item sa summary pagpasok sa page
-        window.onload = function() {
-            if (localStorage.getItem('orderItem')) {
-                const item = JSON.parse(localStorage.getItem('orderItem'));
-                document.getElementById('summary-name').innerText = item.name;
-                document.getElementById('summary-size').innerText = `Size: ${item.size}`;
-                document.getElementById('summary-qty').innerText = `Qty: ${item.qty}`;
-                document.getElementById('summary-price').innerText = `₱${item.price}.00`;
-                document.getElementById('subtotal').innerText = `₱${item.total}.00`;
-                document.getElementById('final-total').innerText = `₱${item.total}.00 PHP`;
-            } else {
-                // Kung walang laman, ibalik sa home
-                window.location.href = 'index.html';
-            }
-        };
-    </script>
+</header>
+
+<div class="checkout-container">
+
+    <!-- LEFT FORM -->
+    <div class="form-section">
+
+        <h2 class="section-title">Contact</h2>
+        <input type="email" placeholder="Email" class="full-width-input" id="email-input">
+
+        <h2 class="section-title">Delivery</h2>
+        <select class="full-width-input">
+            <option>Philippines</option>
+        </select>
+
+        <div class="name-inputs">
+            <input type="text" placeholder="First name *" id="first-name-input">
+            <input type="text" placeholder="Last name" id="last-name-input">
+        </div>
+
+        <input type="text" placeholder="House / Street / Landmark *" class="full-width-input" id="address-input">
+        <input type="text" placeholder="Barangay" class="full-width-input" id="barangay-input">
+
+        <input type="number" placeholder="Phone Number *" class="full-width-input" id="phone-input">
+
+        <!-- PAYMENT -->
+        <h2 class="section-title">Payment</h2>
+
+        <div class="payment-method">
+            <label>
+                <input type="radio" name="payment" value="COD" checked>
+                Cash on Delivery (COD)
+            </label><br><br>
+
+            <label>
+                <input type="radio" name="payment" value="GCash">
+                GCash
+            </label>
+
+            <p id="gcash-note" style="display:none;font-size:13px;margin-top:8px;">
+                Send payment screenshot after order confirmation.
+            </p>
+        </div>
+
+        <button class="final-checkout-btn" onclick="createFinalOrderMessage()">
+            Place Order via Messenger
+        </button>
+    </div>
+
+    <!-- RIGHT SUMMARY -->
+    <div class="summary-section">
+        <h3 id="summary-name">Item Name</h3>
+        <p id="summary-size">Size</p>
+        <p id="summary-qty">Qty</p>
+
+        <hr>
+        <p class="summary-line">Subtotal: <span id="subtotal">₱0.00</span></p>
+        <p class="summary-line">Shipping: <span id="shipping-fee">₱150.00</span></p>
+        <hr>
+        <p class="summary-line total">Total: <span id="final-total">₱0.00 PHP</span></p>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+// ============================
+// CHECKOUT AUTO LOAD
+// ============================
+window.onload = function () {
+
+    const stored = localStorage.getItem('orderItem');
+    if (!stored) {
+        window.location.href = 'index.html';
+        return;
+    }
+
+    const item = JSON.parse(stored);
+    const shippingFee = 150;
+    const grandTotal = item.total + shippingFee;
+
+    document.getElementById('summary-name').innerText = item.name;
+    document.getElementById('summary-size').innerText = `Size: ${item.size}`;
+    document.getElementById('summary-qty').innerText = `Qty: ${item.qty}`;
+    document.getElementById('subtotal').innerText = `₱${item.total}.00`;
+    document.getElementById('shipping-fee').innerText = `₱${shippingFee}.00`;
+    document.getElementById('final-total').innerText = `₱${grandTotal}.00 PHP`;
+
+    item.shipping = shippingFee;
+    item.grandTotal = grandTotal;
+    localStorage.setItem('orderItem', JSON.stringify(item));
+
+    // GCash note toggle
+    document.querySelectorAll('input[name="payment"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            document.getElementById('gcash-note').style.display =
+                radio.value === 'GCash' && radio.checked ? 'block' : 'none';
+        });
+    });
+};
+</script>
+
 </body>
 </html>
