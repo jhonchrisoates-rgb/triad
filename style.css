@@ -98,31 +98,31 @@ a:hover {
    4. PRODUCT GRID (HOME)
 ========================= */
 .product-grid {
-    max-width: 1200px;
-    margin: 50px auto;
+    max-width: 1100px;
+    margin: 80px auto;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 50px;
 }
 
 .product-item {
-    text-align: center;
+    text-align: left;
 }
 
 .product-photo {
     width: 100%;
+    background: #111;
 }
 
 .brand-name {
     font-size: 10px;
-    color: #aaa;
+    color: #777;
     margin-top: 10px;
 }
 
 .product-name {
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 14px;
     margin: 5px 0;
 }
 
@@ -130,6 +130,7 @@ a:hover {
     font-size: 14px;
     font-weight: bold;
 }
+
 
 /* =========================
    5. PRODUCT PAGE
@@ -308,4 +309,31 @@ a:hover {
     .banner-image {
         height: 350px;
     }
+}
+/* HERO CLEAN */
+.hero {
+    height: 60vh;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #222;
+}
+
+.hero h1 {
+    font-size: 36px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 14px;
+    color: #aaa;
+    letter-spacing: 1px;
+}
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: 1px;
 }
