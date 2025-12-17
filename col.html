@@ -3,78 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRIAD Shirt - Buy Now</title>
+    <title>TRIAD WINRE Oversized Shirt | Buy Now</title>
+    <meta name="description" content="TRIAD Originals WINRE oversized t-shirt. Premium unisex streetwear.">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="header-content">
-            <a href="index.html" class="logo-link">TRIAD</a> 
-            <nav class="main-nav">
-                <a href="index.html" class="nav-item">Home</a>
-            </nav>
-            <a href="https://m.me/triadclothingph" target="_blank" class="messenger-icon">
-                Messenger
-            </a>
-        </div>
-    </header>
-
-    <div class="product-page-container">
-        
-        <div class="product-image-section">
-            <p class="brand-small">TRIAD</p>
-            <img src="baner.jpg" alt="TRIAD WINRE T-Shirt" class="main-product-image">
-            <p class="brand-footer">TRIAD</p> 
-        </div>
-        
-        <div class="product-details-section">
-            
-            <p class="price-large">₱800.00 PHP</p>
-            <p class="shipping-info">Shipping calculated at checkout.</p>
-            <hr>
-
-            <h1 class="product-title">TRIAD ORIGINALS - "WINRE" - Unisex | Men | Women (OVERSIZED)</h1>
-
-            <div class="size-options">
-                <p class="label">Size</p>
-                <div class="size-buttons" id="size-options-container">
-                    <button class="size-btn" onclick="selectSize('S')">S</button>
-                    <button class="size-btn" onclick="selectSize('M')">M</button>
-                    <button class="size-btn" onclick="selectSize('L')">L</button> 
-                    <button class="size-btn" onclick="selectSize('XL')">XL</button>
-                    <button class="size-btn" onclick="selectSize('2XL')">2XL</button>
-                    <button class="size-btn" onclick="selectSize('3XL')">3XL</button>
-                </div>
-            </div>
-
-            <div class="quantity-selector">
-                <p class="label">Quantity</p>
-                <div class="quantity-input-box">
-                    <button onclick="changeQuantity(-1)">-</button>
-                    <input type="text" id="quantity-input" value="1" readonly>
-                    <button onclick="changeQuantity(1)">+</button>
-                </div>
-            </div>
-            
-        <a 
-    href="checkout.html" 
-    class="buy-now-btn"
-    onclick="return saveOrderAndRedirectToCheckout()" 
->
-    Buy it now
-</a>
-            
-            <p class="category-link">> TRIAD Originals</p>
-        </div>
+<header class="main-header">
+    <div class="header-content">
+        <a href="index.html" class="logo-link">TRIAD</a>
+        <a href="https://m.me/triadclothingph" target="_blank" class="messenger-btn">Messenger</a>
     </div>
-    
-    <script src="script.js"></script>
-    <script>
-        // Item Details: Variables para sa Black Jacket
-        productName ="TRIAD ORIGINALS - BLACK JACKET"; 
-        productPrice = 850;  // Iba ang presyo
-        
-    </script> 
+</header>
+
+<main class="product-page">
+
+    <section class="product-image">
+        <img src="baner.jpg" alt="TRIAD WINRE Oversized Shirt" loading="lazy">
+    </section>
+
+    <section class="product-details">
+
+        <p class="price">₱800.00 PHP</p>
+        <p class="shipping">Shipping calculated at checkout.</p>
+
+        <h1 class="title">
+            TRIAD ORIGINALS – “WINRE”  
+            <span>Oversized | Unisex</span>
+        </h1>
+
+        <!-- SIZE -->
+        <div class="option">
+            <p class="label">Size</p>
+            <div class="sizes">
+                <button class="size-btn" data-size="S">S</button>
+                <button class="size-btn" data-size="M">M</button>
+                <button class="size-btn" data-size="L">L</button>
+                <button class="size-btn" data-size="XL">XL</button>
+                <button class="size-btn" data-size="2XL">2XL</button>
+                <button class="size-btn" data-size="3XL">3XL</button>
+            </div>
+            <p class="selected-size" id="selectedSizeText"></p>
+        </div>
+
+        <!-- QUANTITY -->
+        <div class="option">
+            <p class="label">Quantity</p>
+            <div class="qty-box">
+                <button id="minusBtn">−</button>
+                <input type="text" id="quantity" value="1" readonly>
+                <button id="plusBtn">+</button>
+            </div>
+        </div>
+
+        <button class="buy-btn" id="buyNowBtn">
+            Buy it now
+        </button>
+
+    </section>
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>

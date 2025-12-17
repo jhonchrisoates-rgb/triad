@@ -1,49 +1,68 @@
-// === GLOBAL VARIABLES ===
-let selectedSize = ''; 
-// Ginawa nating number para sa computation
-const messengerLinkBase = "https://m.me/triadclothingph"; 
-let productName; 
-let productPrice;
-// === FUNCTION 1: Para sa pagpili ng Size ===
+// ============================
+// GLOBAL VARIABLES
+// ============================
+let selectedSize = '';
+const messengerLinkBase = "https://m.me/triadclothingph";
+
+// REQUIRED PRODUCT DATA (dapat galing sa HTML)
+let productName = window.productName || '';
+let productPrice = window.productPrice || 0;
+
+
+// ============================
+// SIZE SELECTION
+// ============================
 function selectSize(size) {
     selectedSize = size;
-     
-    
-    // Visual Feedback: Para magbago ang kulay ng piniling button
+
     const buttons = document.querySelectorAll('.size-btn');
     buttons.forEach(btn => btn.classList.remove('selected'));
-    
-    const selectedButton = Array.from(buttons).find(btn => btn.innerText === size);
-    if (selectedButton) {
-        selectedButton.classList.add('selected');
+
+    const activeBtn = Array.from(buttons).find(
+        btn => btn.innerText.trim() === size
+    );
+
+    if (activeBtn) {
+        activeBtn.classList.add('selected');
     }
 }
 
-// === FUNCTION 2: Para sa Quantity +/- ===
+
+// ============================
+// QUANTITY CONTROL
+// ============================
 function changeQuantity(amount) {
     const input = document.getElementById('quantity-input');
-    let quantity = parseInt(input.value);
-    
+    let quantity = parseInt(input.value, 10) || 1;
+
     quantity += amount;
-    if (quantity < 1) {
-        quantity = 1; 
-    }
+    if (quantity < 1) quantity = 1;
+
     input.value = quantity;
 }
 
 
-// === CORE LOGIC: SAVE AND REDIRECT (Tinatawag ng BUY IT NOW sa winre-shirt.html) ===
+// ============================
+// SAVE ORDER & REDIRECT
+// ============================
 function saveOrderAndRedirectToCheckout() {
-    const quantity = document.getElementById('quantity-input').value;
-    
-    if (selectedSize === '') {
-        alert("Pumili po muna ng SIZE bago mag-checkout!"); 
-        return false; // HINDI MAGRE-REDIRECT
+    const quantity = parseInt(
+        document.getElementById('quantity-input').value,
+        10
+    );
+
+    if (!selectedSize) {
+        alert("Pumili po muna ng SIZE bago mag-checkout!");
+        return false;
     }
-    
-    const total = productPrice * parseInt(quantity);
-    
-    // I-store ang order details sa browser (LOCAL STORAGE)
+
+    if (!productName || !productPrice) {
+        alert("Product error. Please refresh the page.");
+        return false;
+    }
+
+    const total = productPrice * quantity;
+
     const orderItem = {
         name: productName,
         size: selectedSize,
@@ -51,39 +70,54 @@ function saveOrderAndRedirectToCheckout() {
         price: productPrice,
         total: total
     };
-    
+
     localStorage.setItem('orderItem', JSON.stringify(orderItem));
-    
-    // Ipagpapatuloy ang redirect sa checkout.html dahil nasa <a> tag na ang href
-    return true; 
+    return true; // allow redirect
 }
 
 
-// === FINAL CHECKOUT LOGIC: Magse-send ng Order sa Messenger (Tinatawag ng Pay button sa checkout.html) ===
+// ============================
+// FINAL CHECKOUT → MESSENGER
+// ============================
 function createFinalOrderMessage() {
-    // 1. Kukunin ang item details mula sa LocalStorage
     const order = JSON.parse(localStorage.getItem('orderItem'));
-    
-    // 2. Kukunin ang Delivery Details mula sa form
-    const firstName = document.getElementById('first-name-input').value;
-    const lastName = document.getElementById('last-name-input').value;
-    const address = document.getElementById('address-input').value;
-    const barangay = document.getElementById('barangay-input').value;
-    const phone = document.getElementById('phone-input').value;
 
-    // 3. Validation: Tiyakin na pinunan ang mga kritikal na field
-    if (!firstName || !address || !phone) {
-        alert("Paki-fill up po muna ang First Name, Address, at Phone Number para sa delivery.");
+    if (!order) {
+        alert("Walang order na nakita. Bumalik po sa product page.");
         return;
     }
 
-    // 4. Pagbuo ng Order Message
-    const message = `FINAL ORDER:\n\nITEM: ${order.name} | Size: ${order.size} | Qty: ${order.qty}\nTOTAL: ₱${order.total}.00 (COD)\n\nDELIVERY DETAILS:\nName: ${firstName} ${lastName}\nAddress: ${address}, ${barangay}\nPhone: ${phone}\nPayment: COD\n\nPaki-confirm po ang order at shipping fee. Salamat!`;
-    
-    const encodedMessage = encodeURIComponent(message);
-    const messengerLink = `${messengerLinkBase}?text=${encodedMessage}`;
-    
-    // 5. I-open ang link at i-clear ang order details
+    const firstName = document.getElementById('first-name-input').value.trim();
+    const lastName = document.getElementById('last-name-input').value.trim();
+    const address = document.getElementById('address-input').value.trim();
+    const barangay = document.getElementById('barangay-input').value.trim();
+    const phone = document.getElementById('phone-input').value.trim();
+
+    if (!firstName || !address || !phone) {
+        alert("Paki-fill up ang First Name, Address, at Phone Number.");
+        return;
+    }
+
+    const message = 
+`FINAL ORDER
+
+ITEM: ${order.name}
+Size: ${order.size}
+Quantity: ${order.qty}
+TOTAL: ₱${order.total}.00 (COD)
+
+DELIVERY DETAILS:
+Name: ${firstName} ${lastName}
+Address: ${address}, ${barangay}
+Phone: ${phone}
+
+Payment: COD
+
+Paki-confirm po ang order at shipping fee. Salamat!`;
+
+    const messengerLink = 
+        `${messengerLinkBase}?text=${encodeURIComponent(message)}`;
+
     window.open(messengerLink, '_blank');
-    localStorage.removeItem('orderItem'); 
+    localStorage.removeItem('orderItem');
 }

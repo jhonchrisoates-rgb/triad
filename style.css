@@ -387,3 +387,155 @@ h1 {
     background-color: #222;
     color: white;
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #fff;
+    color: #000;
+}
+
+/* HEADER */
+.main-header {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+
+.messenger-btn {
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+}
+
+/* LAYOUT */
+.product-page {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+/* IMAGE */
+.product-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* DETAILS */
+.product-details {
+    margin-top: 20px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.shipping {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.title {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.title span {
+    display: block;
+    font-size: 14px;
+    color: #666;
+}
+
+/* OPTIONS */
+.option {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+/* SIZE BUTTONS */
+.sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.size-btn {
+    padding: 10px 14px;
+    border: 1px solid #000;
+    background: #fff;
+    cursor: pointer;
+}
+
+.size-btn.active {
+    background: #000;
+    color: #fff;
+}
+
+/* QUANTITY */
+.qty-box {
+    display: flex;
+    width: 120px;
+    border: 1px solid #000;
+}
+
+.qty-box button {
+    width: 40px;
+    border: none;
+    background: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.qty-box input {
+    width: 40px;
+    text-align: center;
+    border: none;
+}
+
+/* BUY BUTTON */
+.buy-btn {
+    width: 100%;
+    padding: 15px;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+    .product-page {
+        flex-direction: row;
+        gap: 40px;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .product-image,
+    .product-details {
+        width: 50%;
+    }
+}
