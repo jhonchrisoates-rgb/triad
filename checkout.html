@@ -7,52 +7,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header class="main-header">
     <div class="header-content">
         <a href="index.html" class="logo-link">TRIAD</a>
-        <a href="https://m.me/triadclothingph" target="_blank" class="messenger-icon">Messenger</a>
+        <a href="https://m.me/triadclothingph" target="_blank" class="messenger-icon">
+            Messenger
+        </a>
     </div>
 </header>
 
 <div class="checkout-container">
-
     <div class="form-section">
         <h2 class="section-title">Contact</h2>
         <input type="email" placeholder="Email" class="full-width-input" id="email-input">
 
         <h2 class="section-title">Delivery</h2>
-        <select class="full-width-input">
-            <option>Philippines</option>
-        </select>
-
         <div class="name-inputs">
-            <input type="text" placeholder="First name *" id="first-name-input">
-            <input type="text" placeholder="Last name" id="last-name-input">
+            <input type="text" placeholder="First Name *" id="first-name-input">
+            <input type="text" placeholder="Last Name" id="last-name-input">
         </div>
-
         <input type="text" placeholder="House / Street / Landmark *" class="full-width-input" id="address-input">
         <input type="text" placeholder="Barangay" class="full-width-input" id="barangay-input">
         <input type="number" placeholder="Phone Number *" class="full-width-input" id="phone-input">
 
         <h2 class="section-title">Payment</h2>
-        <div class="payment-method">
-            <label>
-                <input type="radio" name="payment" value="COD" checked>
-                Cash on Delivery (COD)
-            </label><br><br>
-            <label>
-                <input type="radio" name="payment" value="GCash">
-                GCash
-            </label>
-            <p id="gcash-note" style="display:none;font-size:13px;margin-top:8px;">
-                Send payment screenshot after order confirmation.
-            </p>
-        </div>
+        <label><input type="radio" name="payment" value="COD" checked> Cash on Delivery (COD)</label><br><br>
+        <label><input type="radio" name="payment" value="GCash"> GCash</label>
+        <p id="gcash-note" style="display:none;font-size:13px;margin-top:8px;">
+            Send payment screenshot after order confirmation.
+        </p>
 
-        <button class="final-checkout-btn" onclick="createFinalOrderMessage()">
-            Place Order via Messenger
-        </button>
+        <button class="final-checkout-btn" onclick="createFinalOrderMessage()">Place Order via Messenger</button>
     </div>
 
     <div class="summary-section">
@@ -65,7 +50,6 @@
         <hr>
         <p class="summary-line total">Total: <span id="final-total">₱0.00 PHP</span></p>
     </div>
-
 </div>
 
 <script src="script.js"></script>
